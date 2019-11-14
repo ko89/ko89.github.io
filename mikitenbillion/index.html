@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | MikiTenBillion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>MikiTenBillion</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Builds.json", {onProgress: UnityProgress});
+        window.UnityLoader = window.UnityLoader || {
+            Error: {}, instantiate: function () {
+            }
+        };
+        window.buildPath = "Build/Builds.json";
+        window.gameInstance = null;
+        if (!/UNITY_WEBGL_BUILD_URL/.test(buildPath)) {
+            window.gameInstance = UnityLoader.instantiate("gameContainer", buildPath, {onProgress: UnityProgress});
+        }
+
     </script>
-  </head>
-  <body>
+</head>
+<body style="height:100%;">
+<div style="display: flex; align-items: center; justify-content: center; height: 100%;">
     <div class="webgl-content">
-      <div id="unityContainer" style="width: 750px; height: 1334px"></div>
-      <div class="footer">
-        <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-        <div class="title">MikiTenBillion</div>
-      </div>
-      愛を込めてテンビリオンに達していこう！Let's reach ten billion!
+        <div id="gameContainer" style="width: 375px; height: 635px"></div>
+        愛を込めてテンビリオンに達していこう！Let's reach ten billion!
     </div>
-  </body>
-</html>
+</div>
+</body>
