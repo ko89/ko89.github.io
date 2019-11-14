@@ -14,7 +14,7 @@
             Error: {}, instantiate: function () {
             }
         };
-        window.buildPath = "Build/Builds.json";
+        window.buildPath = "Build/TemplateData.json";
         window.gameInstance = null;
         if (!/UNITY_WEBGL_BUILD_URL/.test(buildPath)) {
             window.gameInstance = UnityLoader.instantiate("gameContainer", buildPath, {onProgress: UnityProgress});
@@ -26,7 +26,6 @@
 <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
     <div class="webgl-content">
         <div id="gameContainer" style="width: 375px; height: 635px"></div>
-        愛を込めてテンビリオンに達していこう！Let's reach ten billion!
     </div>
 </div>
 </body>
